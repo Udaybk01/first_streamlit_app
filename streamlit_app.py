@@ -48,10 +48,10 @@ my_data_rows = my_cur.fetchall()
 streamlit.text("Hello from Snowflake:")
 streamlit.dataframe(my_data_rows)
 
-add_to_fruit = streamlit.text_input('What fruit would you like to add?')
+new_fruit = streamlit.text_input('What fruit would you like to add?')
 if streamlit.button('Add fruit to the list'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-  back_from_function = insert_row_snowflake(add_to_fruit)
+  back_from_function = insert_row_snowflake(new_fruit)
   streamlit.text(back_from_function)
   
 def insert_row_snowflake(new_fruit):
